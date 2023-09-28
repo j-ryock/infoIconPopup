@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu with Information</title>
+    <style>
+        /* Styling for the dropdown container */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Styling for the dropdown button */
+        .dropdown-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Styling for the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+        }
+
+        /* Styling for the information icon */
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Style for information tooltip */
+        .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Show the tooltip when hovering over the info icon */
+        .info-icon:hover + .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown-container">
+        <!-- Information Icon -->
+        <div class="info-icon">i</div>
+        <!-- Dropdown Button -->
+        <button class="dropdown-button">Dropdown</button>
+        <!-- Dropdown Content (hidden by default) -->
+        <div class="dropdown-content">
+            <p>Item 1</p>
+            <p>Item 2</p>
+            <p>Item 3</p>
+        </div>
+        <!-- Information Tooltip -->
+        <div class="tooltip">Click to open the dropdown menu</div>
+    </div>
+
+    <script>
+        // JavaScript to handle dropdown behavior
+        const dropdownContainer = document.querySelector('.dropdown-container');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        // Toggle the dropdown menu when the button is clicked
+        dropdownContainer.addEventListener('click', function() {
+            dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+        });
+
+        // Hide the dropdown menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!dropdownContainer.contains(event.target)) {
+                dropdownContent.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
